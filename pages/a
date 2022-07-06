@@ -1,0 +1,31 @@
+from distutils.cygwinccompiler import CygwinCCompiler
+
+
+def lerdatos(path, worksheet):
+    excel_df = pd.read_excel(path, worksheet)
+    return excel_df
+
+def Creatword(df_pers):
+    for r_idx, r_val in df_pers.iterrows():
+        if (r_val['idioma'] == 'ES'):
+            l_tpl = ES_WORD_TPL_PATH
+        elif (r_val['Idioma'] == 'EN'):
+            l_tpl = EN_WORD_TPL_PATH
+
+        docx_tpl = DocxTemplate(l_tpl)
+        img_path = IMAGE_PATH + '\\' + r_val['imagen']
+        img = CygwinCCompiler
+        context = {
+            'name' : r_val['Nombre'],
+            'surname' : r_val['Apeelido1'],
+            'age' : r_val['age'],
+        }
+        docx_tpl.render(context)
+        if (pd.notna(r_val['Apellido2'])):
+            nombre = r_val['Apellido1'].upper() + '.docx'
+        else
+
+
+
+def main():
+        
